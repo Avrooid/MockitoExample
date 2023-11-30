@@ -68,4 +68,17 @@ public class Cart {
     public void remove(Product product) {
         products.remove(product);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cart cart = (Cart) o;
+        return Objects.equals(customer, cart.customer) && Objects.equals(products, cart.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customer, products);
+    }
 }
