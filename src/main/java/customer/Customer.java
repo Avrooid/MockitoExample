@@ -1,5 +1,7 @@
 package customer;
 
+import java.util.Objects;
+
 /**
  * Покупатель
  * @author vpyzhyanov
@@ -28,5 +30,18 @@ public class Customer {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return id == customer.id && Objects.equals(phone, customer.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, phone);
     }
 }
